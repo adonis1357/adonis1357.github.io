@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>매치마인 (MatchMine)</title>
+<meta name="description" content="매치마인(MatchMine) — 헬스노트, 잼마인(GemMine), 고블린 스매시를 만드는 1인 앱·게임 스튜디오">
+<style>
+  :root{
+    --bg:#FAF9F5; --surface:#FFFFFF; --ink:#141413; --ink2:#3D3D3A; --muted:#87867F;
+    --line:#E8E6DC; --accent:#C9623F; --accent-soft:#F7E4DC;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#1F1E1D; --surface:#2A2927; --ink:#F2F0E8; --ink2:#D4D1C7; --muted:#9C998F;
+      --line:#3A3935; --accent:#E58A68; --accent-soft:#3B2C25;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:-apple-system,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+       line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+  header{padding:64px 0 36px}
+  .brand{font-size:.95rem;letter-spacing:.08em;color:var(--accent);font-weight:700;margin:0 0 10px}
+  h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.25;margin:0 0 14px;letter-spacing:-.01em}
+  .lead{font-size:1.08rem;color:var(--ink2);margin:0;max-width:34em}
+  h2{font-size:1.05rem;color:var(--muted);font-weight:600;letter-spacing:.04em;margin:48px 0 16px}
+  .apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .app{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;
+       display:flex;flex-direction:column;gap:12px}
+  .app-head{display:flex;align-items:center;gap:14px}
+  .app img{width:64px;height:64px;border-radius:16px;flex:none}
+  .app h3{margin:0;font-size:1.12rem}
+  .app h3 small{font-size:.8rem;color:var(--muted);font-weight:600;margin-left:4px}
+  .tag{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:999px;
+       background:var(--accent-soft);color:var(--accent);margin-top:4px}
+  .tag.gray{background:var(--line);color:var(--ink2)}
+  .app p{margin:0;color:var(--ink2);font-size:.95rem;flex:1}
+  .links{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.92rem}
+  a{color:var(--accent);text-decoration:none;font-weight:600}
+  a:hover{text-decoration:underline}
+  .contact{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+  .contact p{margin:0 0 6px;color:var(--ink2)}
+  footer{margin-top:56px;padding:28px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  footer dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:0}
+  footer dt{font-weight:600;color:var(--ink2)}
+  footer dd{margin:0;word-break:keep-all}
+  @media (max-width:520px){ footer dl{grid-template-columns:1fr} footer dd{margin-bottom:6px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="brand">MATCHMINE</p>
+    <h1>매치마인</h1>
+    <p class="lead">하루를 조금 더 편하게 만드는 앱과, 잠깐 쉬어 가는 퍼즐 게임을 만드는 1인 개발 스튜디오입니다.</p>
+  </header>
+
+  <h2>앱과 게임</h2>
+  <div class="apps">
+    <article class="app">
+      <div class="app-head">
+        <img src="img/healthnote.png" alt="헬스노트 아이콘">
+        <div><h3>헬스노트</h3><span class="tag gray">출시 준비 중</span></div>
+      </div>
+      <p>약 챙기기부터 혈압·혈당·운동까지, 하루 건강 기록을 한 곳에 모아 도표로 보여 주는 앱. 기록은 내 휴대폰에만 저장됩니다.</p>
+      <div class="links">
+        <a href="https://adonis1357.github.io/healthnote-privacy/">개인정보처리방침</a>
+      </div>
+    </article>
+
+    <article class="app">
+      <div class="app-head">
+        <img src="img/gemmine.png" alt="잼마인 아이콘">
+        <div><h3>잼마인 <small>GemMine</small></h3><span class="tag">Google Play</span></div>
+      </div>
+      <p>숫자를 읽고 숨은 보석을 캐내는 광산 추리 퍼즐.</p>
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=com.JungJinHoCompany.GemMine">Google Play에서 보기</a>
+        <a href="https://adonis1357.github.io/gemmine-privacy/">개인정보처리방침</a>
+      </div>
+    </article>
+
+    <article class="app">
+      <div class="app-head">
+        <img src="img/goblinsmash.png" alt="고블린 스매시 아이콘">
+        <div><h3>고블린 스매시</h3><span class="tag gray">테스트 중</span></div>
+      </div>
+      <p>육각형 보석을 돌려 맞추며 몰려오는 고블린을 물리치는 매치 퍼즐.</p>
+    </article>
+  </div>
+
+  <h2>문의</h2>
+  <div class="contact">
+    <p>앱 사용 중 불편한 점, 오류 신고, 제휴 문의는 이메일로 보내 주세요.</p>
+    <p><a href="mailto:younggeneral1357@gmail.com">younggeneral1357@gmail.com</a></p>
+  </div>
+
+  <footer>
+    <dl>
+      <dt>상호</dt><dd>매치마인(MatchMine)</dd>
+      <dt>대표자</dt><dd>정진호</dd>
+      <dt>사업장 소재지</dt><dd>경기도 부천시 원미구 상일로 82, 4층 404-G211호(상동, 중동다모아쇼핑타운)</dd>
+      <dt>사업자등록번호</dt><dd>238-08-03665</dd>
+      <dt>통신판매업 신고</dt><dd>제2026-부천원미-1850호</dd>
+      <dt>전화</dt><dd>010-8028-8744</dd>
+      <dt>이메일</dt><dd>younggeneral1357@gmail.com</dd>
+    </dl>
+    <p style="margin-top:18px">© 2026 매치마인(MatchMine)</p>
+  </footer>
+</div>
+</body>
+</html>
