@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>고블린 스매시: 육각 블록 매치3 퍼즐 | Goblin Smash</title>
+<meta name="description" content="육각 블록을 돌려 색을 맞추고 고블린을 물리치는 매치3 퍼즐! 200레벨·보스전·로그라이크 기술">
+<meta name="theme-color" content="#0E142C">
+<link rel="icon" href="../assets/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icon.png">
+<link rel="canonical" href="https://adonis1357.github.io/goblin-smash/goblinsmash/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Goblin Smash">
+<meta property="og:title" content="Goblin Smash: Hex Match Puzzle">
+<meta property="og:description" content="Rotate hex blocks, match colors and smash goblins in a roguelike match-3 puzzle">
+<meta property="og:image" content="https://adonis1357.github.io/goblin-smash/assets/og_image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://adonis1357.github.io/goblin-smash/goblinsmash/">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Goblin Smash: Hex Match Puzzle">
+<meta name="twitter:description" content="Rotate hex blocks, match colors and smash goblins in a roguelike match-3 puzzle">
+<meta name="twitter:image" content="https://adonis1357.github.io/goblin-smash/assets/og_image.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": [
+  "VideoGame",
+  "SoftwareApplication",
+  "MobileApplication"
+ ],
+ "name": "Goblin Smash: Hex Match Puzzle",
+ "alternateName": "고블린 스매시: 육각 블록 매치3 퍼즐",
+ "description": "Rotate hex blocks, match colors and smash goblins in a roguelike match-3 puzzle",
+ "url": "https://adonis1357.github.io/goblin-smash/goblinsmash/",
+ "image": "https://adonis1357.github.io/goblin-smash/assets/icon.png",
+ "applicationCategory": "GameApplication",
+ "applicationSubCategory": "Puzzle",
+ "genre": [
+  "Puzzle",
+  "Match-3",
+  "Roguelike"
+ ],
+ "operatingSystem": "Android",
+ "gamePlatform": "Android",
+ "playMode": "SinglePlayer",
+ "installUrl": "https://play.google.com/store/apps/details?id=com.matchmine.hexapuzzle",
+ "downloadUrl": "https://play.google.com/store/apps/details?id=com.matchmine.hexapuzzle",
+ "inLanguage": [
+  "ko",
+  "en",
+  "ja",
+  "zh-Hans",
+  "zh-Hant",
+  "fr",
+  "es",
+  "de",
+  "pt",
+  "ru",
+  "vi",
+  "th",
+  "id"
+ ],
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "KRW",
+  "availability": "https://schema.org/InStock"
+ },
+ "author": {
+  "@type": "Person",
+  "name": "Jinho Jung",
+  "alternateName": "정진호"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "MatchMine",
+  "email": "younggeneral1357@gmail.com"
+ },
+ "datePublished": "2026-10-06",
+ "screenshot": [
+  "https://adonis1357.github.io/goblin-smash/assets/shots/01_gameplay.jpg",
+  "https://adonis1357.github.io/goblin-smash/assets/shots/02_bomb.jpg",
+  "https://adonis1357.github.io/goblin-smash/assets/shots/03_cards.jpg",
+  "https://adonis1357.github.io/goblin-smash/assets/shots/04_boss.jpg",
+  "https://adonis1357.github.io/goblin-smash/assets/shots/05_drill.jpg",
+  "https://adonis1357.github.io/goblin-smash/assets/shots/06_skills.jpg",
+  "https://adonis1357.github.io/goblin-smash/assets/shots/07_clear.jpg",
+  "https://adonis1357.github.io/goblin-smash/assets/shots/08_lobby.jpg"
+ ]
+}
+</script>
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .hero { padding: 36px 0 26px; text-align: center; }
+  .hero .icon { width: 112px; height: 112px; margin: 0 auto 16px; border-radius: 26px;
+    box-shadow: 0 12px 36px rgba(0,0,0,.5), 0 0 0 1px var(--line); }
+  .hero .tag { color: var(--muted); font-size: .9rem; margin-bottom: 6px; letter-spacing: .04em; text-transform: uppercase; }
+  .hero .pos { font-size: 1.05rem; color: var(--text); max-width: 540px; margin: 0 auto 18px; }
+  .hero .cta { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 14px; }
+  .badges span { font-size: .78rem; color: var(--gold-light); background: var(--glass); border: 1px solid var(--line-soft);
+    border-radius: 999px; padding: 4px 10px; }
+
+  /* 캐러셀 */
+  .carousel { position: relative; }
+  .track { list-style: none; margin: 0; padding: 0 var(--gutter); display: flex; gap: 12px; overflow-x: auto;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .track::-webkit-scrollbar { display: none; }
+  .slide { flex: 0 0 min(64vw, 300px); scroll-snap-align: center; }
+  .slide img { border-radius: 16px; border: 1px solid var(--line-soft); box-shadow: 0 10px 28px rgba(0,0,0,.45); aspect-ratio: 9/16; object-fit: cover; }
+  .nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--line); background: rgba(14,20,44,.7); color: var(--gold-light); font-size: 1.2rem; cursor: pointer; display: none; }
+  .nav.prev { left: 6px; } .nav.next { right: 6px; }
+  @media (min-width: 600px) { .nav { display: block; } }
+  .dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+  .dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; background: rgba(255,255,255,.25); padding: 0; cursor: pointer; }
+  .dots button[aria-current="true"] { background: var(--gold); width: 20px; border-radius: 4px; }
+
+  /* 특징 4블록 */
+  .features { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 560px) { .features { grid-template-columns: 1fr 1fr; } }
+  .feature { padding: 16px; }
+  .feature .ico { width: 44px; height: 44px; margin-bottom: 10px; }
+  .feature h3 { margin-bottom: 4px; }
+  .feature p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+  /* 쇼츠 */
+  .video { position: relative; width: min(100%, 360px); aspect-ratio: 9/16; margin: 0 auto; border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--line); background: #000; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* 전체 설명 */
+  details.desc { padding: 0; overflow: hidden; }
+  details.desc summary { padding: 16px 18px; cursor: pointer; font-weight: 700; color: var(--gold-light); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  details.desc summary::-webkit-details-marker { display: none; }
+  details.desc summary::after { content: "+"; font-size: 1.3rem; color: var(--gold); }
+  details.desc[open] summary::after { content: "–"; }
+  details.desc .body { padding: 0 18px 18px; color: var(--text); font-size: .95rem; }
+  details.desc .body h3 { margin-top: 18px; }
+  details.desc .body ul { padding-left: 1.2em; color: var(--muted); }
+  details.desc .body li { margin: .25em 0; }
+
+  .bottom-cta { position: sticky; bottom: 0; z-index: 15; padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, rgba(14,20,44,0), rgba(14,20,44,.92) 40%); }
+  .bottom-cta .btn { width: 100%; max-width: var(--maxw); margin: 0 auto; }
+</style>
+</head>
+<body data-lang="ko">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="../assets/icon.png" alt="" width="30" height="30"><span>Goblin Smash</span></a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="ko" aria-pressed="true">한국어</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <img class="icon" src="../assets/icon.png" alt="Goblin Smash 앱 아이콘" width="112" height="112">
+    <div class="tag"><span class="ko">헥사 매치3 × 고블린 전투 × 로그라이크</span><span class="en">Hex match-3 × goblin battles × roguelike</span></div>
+    <h1><span class="ko">고블린 스매시: 육각 블록 매치3 퍼즐</span><span class="en">Goblin Smash: Hex Match Puzzle</span></h1>
+    <p class="pos"><span class="ko">육각 블록을 돌려 색을 맞추고 고블린을 물리치는 매치3 퍼즐! 200레벨·보스전·로그라이크 기술</span><span class="en">Rotate hex blocks, match colors and smash goblins in a roguelike match-3 puzzle</span></p>
+    <div class="cta">
+      <a class="btn btn-gold btn-play" href="https://play.google.com/store/apps/details?id=com.matchmine.hexapuzzle&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dweb%26utm_campaign%3Dlaunch" rel="noopener" target="_blank" id="play-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A1400" d="M4 3.5v17c0 .6.6 1 1.1.7L19 12.7c.5-.3.5-1 0-1.3L5.1 2.8c-.5-.3-1.1.1-1.1.7z"/><path fill="#1A1400" opacity=".55" d="M4 3.5l9.4 8.5L4 20.5z"/></svg>
+        <span class="lbl"><small class="ko">Google Play에서</small><small class="en">GET IT ON</small><span class="ko">다운로드</span><span class="en">Google Play</span></span>
+      </a>
+      <span class="small muted"><span class="ko">Android · 무료 · 광고 없음</span><span class="en">Android · Free · No ads</span></span>
+    </div>
+    <div class="badges">
+      <span class="ko">200레벨 + 무한 도전</span><span class="en">200 levels + Endless</span>
+      <span class="ko">보스 2종</span><span class="en">2 bosses</span>
+      <span class="ko">기술 카드 21종</span><span class="en">21 skill cards</span>
+      <span class="ko">오프라인 플레이</span><span class="en">Plays offline</span>
+      <span class="ko">13개 언어</span><span class="en">13 languages</span>
+    </div>
+  </section>
+
+  <section class="section carousel" aria-label="Screenshots">
+    <ul class="track" id="track">
+      <li class="slide"><img src="../assets/shots/01_gameplay.jpg" alt="회전 매칭 플레이 / Rotate-to-match gameplay" loading="eager" width="720" height="1280"></li>
+      <li class="slide"><img src="../assets/shots/02_bomb.jpg" alt="폭탄 특수 블록 / Bomb special block" loading="lazy" width="720" height="1280"></li>
+      <li class="slide"><img src="../assets/shots/03_cards.jpg" alt="기술 카드 선택 / Skill card pick" loading="lazy" width="720" height="1280"></li>
+      <li class="slide"><img src="../assets/shots/04_boss.jpg" alt="고블린 킹 보스전 / Goblin King boss fight" loading="lazy" width="720" height="1280"></li>
+      <li class="slide"><img src="../assets/shots/05_drill.jpg" alt="드릴 관통 / Drill piercing" loading="lazy" width="720" height="1280"></li>
+      <li class="slide"><img src="../assets/shots/06_skills.jpg" alt="기술 트리 / Skill tree" loading="lazy" width="720" height="1280"></li>
+      <li class="slide"><img src="../assets/shots/07_clear.jpg" alt="레벨 클리어 / Level clear" loading="lazy" width="720" height="1280"></li>
+      <li class="slide"><img src="../assets/shots/08_lobby.jpg" alt="크리스탈 숲 로비 / Crystal Forest lobby" loading="lazy" width="720" height="1280"></li>
+    </ul>
+    <button type="button" class="nav prev" id="prev" aria-label="이전">‹</button>
+    <button type="button" class="nav next" id="next" aria-label="다음">›</button>
+    <div class="dots" id="dots">
+      <button type="button" data-i="0" aria-label="1"></button>
+      <button type="button" data-i="1" aria-label="2"></button>
+      <button type="button" data-i="2" aria-label="3"></button>
+      <button type="button" data-i="3" aria-label="4"></button>
+      <button type="button" data-i="4" aria-label="5"></button>
+      <button type="button" data-i="5" aria-label="6"></button>
+      <button type="button" data-i="6" aria-label="7"></button>
+      <button type="button" data-i="7" aria-label="8"></button>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2 class="center"><span class="ko">왜 다른 매치3인가</span><span class="en">What makes it different</span></h2>
+    <div class="features">
+      <div class="glass feature">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><polygon points="24,5 41,14.5 41,33.5 24,43 7,33.5 7,14.5" fill="none" stroke="#E9C24B" stroke-width="2.5"/><path d="M15 30a10 10 0 1 1 18 0" fill="none" stroke="#FFF0C0" stroke-width="2.5" stroke-linecap="round"/><path d="M31 25l2 5-5 1" fill="none" stroke="#FFF0C0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3><span class="ko">돌려서 맞추는 매치3</span><span class="en">A match-3 you rotate</span></h3>
+        <p><span class="ko">삼각형으로 붙은 육각 블록 3개를 120° 회전해 같은 색을 맞춥니다. 스와이프가 아니라 회전이라 한 수 한 수가 전략입니다.</span><span class="en">Turn a triangle of three hex blocks by 120° to line up colors. No swiping, so every move is a small strategy puzzle.</span></p>
+      </div>
+      <div class="glass feature">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="20" r="9" fill="none" stroke="#E9C24B" stroke-width="2.5"/><path d="M10 42c2-8 8-12 14-12s12 4 14 12" fill="none" stroke="#E9C24B" stroke-width="2.5" stroke-linecap="round"/><path d="M15 12l4 4M33 12l-4 4" stroke="#FFF0C0" stroke-width="2.5" stroke-linecap="round"/><circle cx="20.5" cy="20" r="1.6" fill="#FFF0C0"/><circle cx="27.5" cy="20" r="1.6" fill="#FFF0C0"/></svg>
+        <h3><span class="ko">블록 위의 고블린 10종 + 보스 2</span><span class="en">10 goblin types + 2 bosses</span></h3>
+        <p><span class="ko">방패·궁수·마법사·도둑·마녀… 고블린이 선 블록을 맞추면 직격, 옆을 맞추면 인접 피해. 100레벨 고블린 킹, 200레벨 고블린 퀸.</span><span class="en">Shield, archer, wizard, thief, witch and more. Match under a goblin for a direct hit, next to it for splash. Goblin King at 100, Queen at 200.</span></p>
+      </div>
+      <div class="glass feature">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="10" width="22" height="30" rx="3" fill="none" stroke="#E9C24B" stroke-width="2.5" transform="rotate(-8 20 25)"/><rect x="17" y="8" width="22" height="30" rx="3" fill="rgba(14,20,44,.9)" stroke="#FFF0C0" stroke-width="2.5" transform="rotate(6 28 23)"/><path d="M24 17l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" fill="#E9C24B" transform="rotate(6 28 23) translate(4 1)"/></svg>
+        <h3><span class="ko">판마다 고르는 기술 카드 21종</span><span class="en">21 roguelike skill cards</span></h3>
+        <p><span class="ko">주황 블록으로 게이지를 채우면 카드 3장 중 1장 선택. 기술은 판마다 리셋되어 같은 레벨도 매번 다른 전략이 됩니다.</span><span class="en">Fill the gauge with orange blocks and pick one of three cards. Skills reset every run, so the same level plays out differently each time.</span></p>
+      </div>
+      <div class="glass feature">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="14" y="5" width="20" height="38" rx="4" fill="none" stroke="#E9C24B" stroke-width="2.5"/><path d="M20 9h8" stroke="#FFF0C0" stroke-width="2.5" stroke-linecap="round"/><path d="M18 24l4 4 8-9" fill="none" stroke="#FFF0C0" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 14q3 0 3 4M6 30q3 0 3-4" stroke="#E9C24B" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+        <h3><span class="ko">광고 없음 · 오프라인 · 한 손 조작</span><span class="en">No ads · Offline · One hand</span></h3>
+        <p><span class="ko">광고가 흐름을 끊지 않습니다. 인터넷 없이도 플레이 가능. 세로 화면 한 손 조작, 13개 언어. 프리미엄 타임 패스는 자동 갱신 없는 1회 구매.</span><span class="en">No ads interrupt your game. Plays offline, portrait one-thumb controls, 13 languages. The optional premium time pass is a one-time purchase, never a subscription.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="shorts" hidden>
+    <h2 class="center"><span class="ko">15초로 보는 플레이</span><span class="en">See it in 15 seconds</span></h2>
+    <div class="video" id="video"></div>
+  </section>
+
+  <section class="section wrap">
+    <details class="glass desc">
+      <summary><span class="ko">게임 전체 소개 보기</span><span class="en">Read the full description</span></summary>
+      <div class="body">
+        <div class="ko">
+<p>육각 블록을 돌리는 순간, 고블린과의 전투가 시작됩니다.</p>
+<p>고블린 스매시(Goblin Smash)는 육각형 블록을 회전시켜 색을 맞추는 매치3 퍼즐 게임입니다. 삼각형으로 붙어 있는 블록 3개를 120도씩 돌려 같은 색을 맞추면, 그 블록 위나 옆에 서 있던 고블린이 피해를 입습니다. 밀어서 바꾸는 방식이 아니라 &#x27;돌려서&#x27; 맞추는 회전 퍼즐이라, 한 수 한 수에 전략과 두뇌 회전이 필요합니다.</p>
+<h3>돌려서 맞추는 육각형 3매치</h3>
+<ul><li>삼각형으로 모인 블록 3개를 120도 회전해 같은 색을 맞추세요</li><li>레벨마다 이동 횟수가 정해져 있어, 몇 수 앞을 내다보는 블록 퍼즐의 손맛이 살아 있습니다</li><li>더 이상 돌릴 곳이 없으면 판이 자동으로 다시 섞입니다</li></ul>
+<h3>블록 위의 고블린을 물리쳐라</h3>
+<ul><li>기본 고블린부터 갑옷·활·방패·폭탄·힐러·헤비·마법사·도둑·마녀 고블린까지 10종, 그리고 더 강한 엘리트 고블린이 등장합니다</li><li>고블린이 선 블록을 맞추면 직접 타격, 옆 블록을 맞추면 인접 타격</li><li>화살로 블록에 금을 내는 활 고블린, 동료를 치료하는 힐러, 카운트다운 뒤 터지는 폭탄 고블린… 저마다 다른 패턴을 읽어야 합니다</li><li>블록 3칸을 차지해 회전을 막는 헤비 고블린, 몸을 숨기는 도둑 고블린, 언데드를 불러내는 마녀 고블린까지 상대에 따라 공략 순서가 달라집니다</li><li>블록을 점령해 회색으로 만드는 고블린을 막지 못하면 판이 점점 좁아집니다</li></ul>
+<h3>특수 블록과 조합</h3>
+<ul><li>드릴: 한 줄을 곧게 꿰뚫는 관통 공격</li><li>폭탄: 주변 7칸을 한 번에 폭파</li><li>드론: 가장 필요한 곳을 스스로 찾아가 공격</li><li>타겟 레이저: 링 모양으로 맞추면 생성되어 한 색의 블록을 모두 파괴</li><li>특수 블록끼리 합치면 더 강력한 조합 효과가 터집니다</li><li>어떤 특수 블록을 언제, 어느 고블린 앞에서 터뜨릴지 고민하는 것이 이 퍼즐 게임의 핵심 전략입니다</li></ul>
+<h3>막힌 판을 뚫는 아이템 4종</h3>
+<ul><li>망치, 스왑, 라인, 역회전으로 위기의 순간을 뒤집으세요</li></ul>
+<h3>판마다 달라지는 로그라이크 기술 리워드</h3>
+<ul><li>21레벨부터 주황 블록을 모아 게이지를 채우면 기술 카드 3장 중 하나를 고릅니다</li><li>드릴 관통, 연쇄 폭탄, 드론 분신, 낙하 치명타 등 21종의 기술을 각각 3단계까지 강화</li><li>기술은 판마다 새로 시작되어, 같은 레벨도 고른 조합에 따라 전혀 다른 전략이 됩니다</li></ul>
+<h3>200레벨, 보스전, 그리고 무한 도전</h3>
+<ul><li>크리스탈 숲을 지나는 200개의 레벨과 챕터</li><li>100레벨 고블린 킹, 200레벨 고블린 퀸과의 보스전</li><li>200레벨을 모두 깨면 끝없이 이어지는 무한 도전 모드가 열립니다</li></ul>
+<h3>한 손으로, 어디서나</h3>
+<ul><li>세로 화면 한 손 조작</li><li>인터넷 연결 없이 오프라인에서도 플레이할 수 있습니다 (결제할 때만 연결 필요)</li><li>광고 없는 게임이라 플레이 흐름이 끊기지 않습니다</li><li>선택형 프리미엄 타임 패스(24시간·7일·30일)는 1회 구매 상품이며, 자동 갱신되는 구독이 아닙니다</li><li>한국어를 포함한 13개 언어 지원</li></ul>
+<p>고블린이 판을 차지하기 전에, 먼저 돌리세요.</p>
+        </div>
+        <div class="en">
+<p>The moment you rotate a block, the battle begins.</p>
+<p>Goblin Smash is a hex match-3 puzzle game where you don&#x27;t swipe, you rotate. Turn a triangle of three hexagon blocks by 120° to match colors, and any goblin standing on or next to those blocks takes the hit. Every level gives you a limited number of moves, so each turn becomes a small strategy puzzle.</p>
+<h3>A match-3 you rotate</h3>
+<ul><li>Spin a cluster of three hex blocks 120° to line up three of a color</li><li>A move limit on every level rewards thinking a few turns ahead</li><li>If no move is left, the board reshuffles itself</li></ul>
+<h3>Goblins on the board</h3>
+<ul><li>Ten goblin types (Goblin, Armored, Archer, Shield, Bomb, Healer, Heavy, Wizard, Thief and Witch) plus tougher elite versions</li><li>Match under a goblin for a direct hit, or next to it for splash damage</li><li>Archers crack blocks, healers patch up their friends and bomb goblins count down to a blast, so learn each pattern</li><li>Goblins capture blocks and turn them gray; stop them before your board shrinks</li></ul>
+<h3>Special blocks and combos</h3>
+<ul><li>Drill: pierces straight through a line</li><li>Bomb: blasts the 7 cells around it</li><li>Drone: flies off to strike where it&#x27;s needed most</li><li>Target Laser: created by a ring match, it wipes out every block of one color</li><li>Merge special blocks together for even bigger combo effects</li></ul>
+<h3>Four items for tight spots</h3>
+<ul><li>Hammer, Swap, Line and Reverse Spin help you break open a stuck board</li></ul>
+<h3>Roguelike skill rewards</h3>
+<ul><li>From level 21, collect orange blocks to fill the reward gauge, then choose one of three skill cards</li><li>21 skills, each upgradable up to level 3: drill piercing, chain bombs, drone clones, fall critical hits and more</li><li>Skills reset every run, so the same level can play out in a completely different way</li></ul>
+<h3>200 levels, boss fights and endless play</h3>
+<ul><li>200 levels spread across the chapters of the Crystal Forest</li><li>Boss battles against the Goblin King at level 100 and the Goblin Queen at level 200</li><li>Clear all 200 to unlock the Endless Challenge mode</li></ul>
+<h3>One hand, anywhere</h3>
+<ul><li>Portrait mode with one-thumb controls</li><li>Plays offline; a connection is only needed for purchases</li><li>No ads interrupt your game</li><li>The optional premium time pass (24 hours, 7 days or 30 days) is a one-time purchase, not a subscription, and never auto-renews</li><li>Available in 13 languages</li></ul>
+<p>Rotate first, before the goblins take the board.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="section wrap center">
+    <a class="btn btn-gold btn-play" href="https://play.google.com/store/apps/details?id=com.matchmine.hexapuzzle&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dweb%26utm_campaign%3Dlaunch" rel="noopener" target="_blank">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A1400" d="M4 3.5v17c0 .6.6 1 1.1.7L19 12.7c.5-.3.5-1 0-1.3L5.1 2.8c-.5-.3-1.1.1-1.1.7z"/><path fill="#1A1400" opacity=".55" d="M4 3.5l9.4 8.5L4 20.5z"/></svg>
+      <span class="lbl"><small class="ko">Google Play에서</small><small class="en">GET IT ON</small><span class="ko">다운로드</span><span class="en">Google Play</span></span>
+    </a>
+    <p class="small muted" style="margin-top:12px"><span class="ko">자매작 <a href="https://play.google.com/store/apps/details?id=com.JungJinHoCompany.GemMine&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dweb%26utm_campaign%3Dxpromo" rel="noopener" target="_blank">GemMine(보석 지뢰찾기)</a>도 같은 개발자가 만들었습니다.</span><span class="en">Also by the same developer: <a href="https://play.google.com/store/apps/details?id=com.JungJinHoCompany.GemMine&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dweb%26utm_campaign%3Dxpromo" rel="noopener" target="_blank">GemMine</a>, a gem minesweeper.</span></p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <ul>
+      <li><a href="../press/"><span class="ko">프레스킷</span><span class="en">Press kit</span></a></li>
+      <li><a href="../links/"><span class="ko">모든 링크</span><span class="en">All links</span></a></li>
+      <li><a href="https://adonis1357.github.io/jammine-policy/privacy-policy.html" rel="noopener" target="_blank"><span class="ko">개인정보처리방침</span><span class="en">Privacy policy</span></a></li>
+      <li><a href="mailto:younggeneral1357@gmail.com?subject=Goblin%20Smash"><span class="ko">문의</span><span class="en">Contact</span></a></li>
+    </ul>
+    <p><span class="ko">© 2026 MatchMine (정진호). Google Play 및 Google Play 로고는 Google LLC의 상표입니다. 게임 그래픽은 AI 도구(Claude)로 생성한 SVG를 바탕으로 제작했습니다.</span><span class="en">© 2026 MatchMine (Jinho Jung). Google Play and the Google Play logo are trademarks of Google LLC. Game graphics were produced from AI-generated (Claude) SVG artwork.</span></p>
+  </div>
+</footer>
+
+<div class="bottom-cta" id="bottom-cta" hidden>
+  <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.matchmine.hexapuzzle&amp;referrer=utm_source%3Dlanding%26utm_medium%3Dweb%26utm_campaign%3Dlaunch" rel="noopener" target="_blank"><span class="ko">Google Play에서 무료 다운로드</span><span class="en">Free on Google Play</span></a>
+</div>
+
+<script>
+(function () {
+  // ---- 설정: 쇼츠 YouTube 영상 ID (예: "dQw4w9WgXcQ"). 비어 있으면 섹션 숨김 ----
+  var YOUTUBE_ID = "";
+
+  // 언어 토글 (URL ?lang=en, 저장값, 브라우저 언어 순)
+  var body = document.body;
+  function setLang(l) {
+    body.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-switch button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === l ? 'true' : 'false');
+    });
+    try { localStorage.setItem('gs_lang', l); } catch (e) {}
+  }
+  var q = new URLSearchParams(location.search).get('lang');
+  var saved = null; try { saved = localStorage.getItem('gs_lang'); } catch (e) {}
+  var nav = (navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+  setLang(q === 'en' || q === 'ko' ? q : (saved || nav));
+  document.querySelectorAll('.lang-switch button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+  });
+
+  // 쇼츠 임베드 (YOUTUBE_ID 있을 때만, 클릭 전엔 iframe 로드 안 함)
+  if (YOUTUBE_ID) {
+    var sec = document.getElementById('shorts'); sec.hidden = false;
+    var v = document.getElementById('video');
+    var ph = document.createElement('button');
+    ph.type = 'button'; ph.setAttribute('aria-label', 'Play video');
+    ph.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;background:#000 url(https://i.ytimg.com/vi/' + YOUTUBE_ID + '/hqdefault.jpg) center/cover no-repeat;';
+    ph.innerHTML = '<svg viewBox="0 0 68 48" width="68" height="48" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)"><path d="M66.5 7.7c-.8-2.9-3-5.2-5.9-6C55.4.3 34 .3 34 .3S12.6.3 7.4 1.7c-2.9.8-5.1 3.1-5.9 6C.3 13 .3 24 .3 24s0 11 1.4 16.3c.8 2.9 3 5.2 5.9 6 5.2 1.4 26.4 1.4 26.4 1.4s21.4 0 26.6-1.4c2.9-.8 5.1-3.1 5.9-6C67.7 35 67.7 24 67.7 24s0-11-1.2-16.3z" fill="#E9C24B"/><path d="M27 34.6V13.4L45 24z" fill="#1A1400"/></svg>';
+    ph.addEventListener('click', function () {
+      v.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + YOUTUBE_ID + '?autoplay=1&playsinline=1&rel=0" title="Goblin Smash shorts" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+    });
+    v.appendChild(ph);
+  }
+
+  // 캐러셀
+  var track = document.getElementById('track');
+  var slides = track.querySelectorAll('.slide');
+  var dots = document.getElementById('dots').querySelectorAll('button');
+  function goTo(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    var s = slides[i];
+    track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.clientWidth) / 2, behavior: 'smooth' });
+  }
+  function current() {
+    var c = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9;
+    slides.forEach(function (s, i) { var d = Math.abs(s.offsetLeft + s.clientWidth / 2 - c); if (d < bd) { bd = d; best = i; } });
+    return best;
+  }
+  function updateDots() { var i = current(); dots.forEach(function (d, j) { d.setAttribute('aria-current', i === j ? 'true' : 'false'); }); }
+  dots.forEach(function (d) { d.addEventListener('click', function () { goTo(+d.getAttribute('data-i')); }); });
+  document.getElementById('prev').addEventListener('click', function () { goTo(current() - 1); });
+  document.getElementById('next').addEventListener('click', function () { goTo(current() + 1); });
+  var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(updateDots, 80); }, { passive: true });
+  updateDots();
+
+  // 하단 고정 CTA: 히어로 버튼이 화면 밖으로 나가면 표시
+  var cta = document.getElementById('bottom-cta'), hero = document.getElementById('play-btn');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { cta.hidden = es[0].isIntersecting; }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
